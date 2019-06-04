@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Banco
+﻿namespace ByteBank.Modelos
 {
-    interface IAutenticavel
+    public interface IAutenticavel
     {
+        bool Autenticar(string senha);
     }
 }
