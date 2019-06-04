@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Banco
+namespace Banco.Funcionarios
 {
-    class Program
+    class Desenvolvedor
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
