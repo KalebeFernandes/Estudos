@@ -5,7 +5,7 @@ namespace ByteBank.SistemaAgencia
     public class ExtratorValorDeArgumentosURL
     {
         public string URL { get; }
-        private readonly string _argumntos;
+        private readonly string _argumentos;
 
         public ExtratorValorDeArgumentosURL(string url)
         {
@@ -15,19 +15,23 @@ namespace ByteBank.SistemaAgencia
             }
             URL = url;
             var indiceInterrogacao = url.IndexOf('?');
-            _argumntos = url.Substring(indiceInterrogacao + 1);
+            _argumentos = url.Substring(indiceInterrogacao + 1);
         }
 
         public string GetValor(string parametro)
         {
-            string palavra = "moedaOrigem=real&moedaDestino=dolar";
-            string nomeArgumento = "moedaDestino";
+            parametro.ToUpper();
+            var argumento = _argumentos.ToUpper();
+            var termo = parametro + "=";
+            var indiceTermo = argumento.IndexOf(termo);
+            var resultado = _argumentos.Substring(indiceTermo + termo.Length);
+            var indiceEComercial = resultado.IndexOf('&');
+            if (indiceEComercial == -1)
+            {
+                return resultado;
+            }
 
-            int indice = palavra.IndexOf(nomeArgumento);
-
-            int indiceValor = indice + nomeArgumento.Length;
-
-            string valorArgumento = palavra.Substring(indiceValor);
+            return resultado.Remove(indiceEComercial);
         }
     }
 }
